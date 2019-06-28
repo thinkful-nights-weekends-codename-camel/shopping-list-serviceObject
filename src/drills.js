@@ -6,49 +6,49 @@ const knexInstance = knex({
   connection: process.env.DB_URL
 });
 
-// function #1
-// function searchByName(searchTerm){
-//   knexInstance
-//     .select('*')
-//     .from('shopping_list')
-//     .where('name','ILIKE',`%${searchTerm}%`)
-//     .then(result => {
-//       console.log(result)
-//     })
-// };
+// Drill #1
+function searchByName(searchTerm){
+  knexInstance
+    .select('*')
+    .from('shopping_list')
+    .where('name','ILIKE',`%${searchTerm}%`)
+    .then(result => {
+      console.log(result)
+    })
+};
 
-// searchByName('fish');
+searchByName('ish');
 
-// function #2
-// function paginateProducts(pageNumber) {
-//   const itemsPerPage = 6;
-//   const offset = itemsPerPage * (pageNumber -1);
-//   knexInstance
-//     .select('*')
-//     .from('shopping_list')
-//     .limit(itemsPerPage)
-//     .offset(offset)
-//     .then(result => {
-//       console.log(result);
-//     });
-// };
+// Drill #2
+function paginateProducts(pageNumber) {
+  const itemsPerPage = 6;
+  const offset = itemsPerPage * (pageNumber -1);
+  knexInstance
+    .select('*')
+    .from('shopping_list')
+    .limit(itemsPerPage)
+    .offset(offset)
+    .then(result => {
+      console.log(result);
+    });
+};
 
-// paginateProducts(5);
+paginateProducts(5);
 
-// function 3
-// function numberOfDaysAgo(daysAgo) {
-//   knexInstance
-//     .select('*')
-//     .from('shopping_list')
-//     .where('date_added','<',knexInstance.raw(`now() - '?? days'::INTERVAL`, daysAgo))
-//     .then(result => {
-//       console.log(result);
-//     })
-// };
+// drill 3
+function numberOfDaysAgo(daysAgo) {
+  knexInstance
+    .select('*')
+    .from('shopping_list')
+    .where('date_added','<',knexInstance.raw(`now() - '?? days'::INTERVAL`, daysAgo))
+    .then(result => {
+      console.log(result);
+    })
+};
 
-// numberOfDaysAgo(20);
+numberOfDaysAgo(20);
 
-// function 4
+// Drill 4
 function totalCost() {
   knexInstance
     .select('category')
